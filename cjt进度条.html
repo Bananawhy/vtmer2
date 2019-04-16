@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <title>进度条</title>
+<head>
+<style>
+
+#loading
+{
+	width: 300px;
+	height: 20px;
+	border: 2px solid #4CAF50;
+	position: relative;
+    margin: 20% auto;
+    border-radius: 20px;
+    background-color: #9c8888;
+}
+
+#loading_1
+{
+    height: 20px;
+    width: 20px;
+	position: absolute;
+	background-color:#d9e0e2;
+    animation:mymove 8s linear;
+    animation-fill-mode:forwards; //当动画完成后，保持最后一个属性值
+    animation-iteration-count:1;
+    border-radius: 20px;
+    animation-delay: 1s;
+    
+}
+
+@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-webkit-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-o-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-ms-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-moz-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+#loadtext
+{
+	position: absolute;
+    right: 0;
+}
+
+/*覆盖层*/
+#cover
+{
+	background-color: white;
+	display: none;
+	width: 300px;
+	height: 20px;
+	z-index: 100;
+	position: absolute;
+    text-align: center;
+    border-radius: 20px;
+
+}
+</style>
+</head>
+
+
+<body>
+
+        <div id="loading">
+                <div id="loading_1"></div>
+                <div id="loadtext">0%</div>
+                <div id="cover">正在跳转...</div>
+            </div>
+        
+        <script>
+        
+        //进度条和计时器
+        var i=0;
+        function test(){
+            i++;
+            document.getElementById("loadtext").innerText = i + "%";
+            if(i<100) setTimeout("test()",80);
+        }
+        setTimeout("test()",100);
+        
+        //进度条判断动画是否停止并将覆盖层跳出
+        {var e = document.getElementById("loading_1");
+            e.addEventListener("animationend", function() {
+                document.getElementById("cover").style.display = "block";
+        window.location.href="https://www.baidu.com/";});setTimeout("function",3000);}
+            
+        </script>
+        
+</body>
+</html>
